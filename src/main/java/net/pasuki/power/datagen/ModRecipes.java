@@ -14,9 +14,9 @@ import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
-public class TutRecipes extends RecipeProvider {
+public class ModRecipes extends RecipeProvider {
 
-    public TutRecipes(PackOutput packOutput) {
+    public ModRecipes(PackOutput packOutput) {
         super(packOutput);
     }
 

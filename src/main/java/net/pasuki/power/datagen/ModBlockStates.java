@@ -15,13 +15,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.function.BiConsumer;
 
-public class TutBlockStates extends BlockStateProvider {
+public class ModBlockStates extends BlockStateProvider {
 
     public static final ResourceLocation BOTTOM = new ResourceLocation(Power.MODID, "block/machine_bottom");
     public static final ResourceLocation TOP = new ResourceLocation(Power.MODID, "block/machine_top");
     public static final ResourceLocation SIDE = new ResourceLocation(Power.MODID, "block/machine_side");
 
-    public TutBlockStates(PackOutput output, ExistingFileHelper exFileHelper) {
+    public ModBlockStates(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, Power.MODID, exFileHelper);
     }
 

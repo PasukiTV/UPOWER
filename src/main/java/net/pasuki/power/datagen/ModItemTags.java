@@ -9,9 +9,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class TutItemTags extends ItemTagsProvider {
+public class ModItemTags extends ItemTagsProvider {
 
-    public TutItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTags, ExistingFileHelper helper) {
+    public ModItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTags, ExistingFileHelper helper) {
         super(packOutput, lookupProvider, blockTags.contentsGetter(), Power.MODID, helper);
     }
 
