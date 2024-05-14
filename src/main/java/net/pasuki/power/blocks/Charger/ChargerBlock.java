@@ -1,4 +1,4 @@
-package net.pasuki.power.blocks;
+package net.pasuki.power.blocks.Charger;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;

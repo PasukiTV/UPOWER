@@ -11,7 +11,11 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.pasuki.power.blocks.*;
+import net.pasuki.power.blocks.Charger.ChargerBlock;
+import net.pasuki.power.blocks.Charger.ChargerBlockEntity;
+import net.pasuki.power.blocks.Generator.GeneratorBlock;
+import net.pasuki.power.blocks.Generator.GeneratorBlockEntity;
+import net.pasuki.power.blocks.Generator.GeneratorContainer;
 import net.pasuki.power.cables.blocks.*;
 
 public class Registration {

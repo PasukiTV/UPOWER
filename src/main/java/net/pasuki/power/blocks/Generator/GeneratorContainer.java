@@ -1,4 +1,4 @@
-package net.pasuki.power.blocks;
+package net.pasuki.power.blocks.Generator;
 
 import net.pasuki.power.Registration;
 import net.minecraft.core.BlockPos;

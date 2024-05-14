@@ -2,8 +2,8 @@ package net.pasuki.power.datagen;
 
 import net.pasuki.power.Registration;
 import net.pasuki.power.Power;
-import net.pasuki.power.blocks.ChargerBlockEntity;
-import net.pasuki.power.blocks.GeneratorBlockEntity;
+import net.pasuki.power.blocks.Charger.ChargerBlockEntity;
+import net.pasuki.power.blocks.Generator.GeneratorBlockEntity;
 import net.pasuki.power.cables.blocks.CableBlockEntity;
 import net.pasuki.power.cables.blocks.FacadeBlockEntity;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;

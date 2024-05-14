@@ -1,4 +1,4 @@
-package net.pasuki.power.blocks;
+package net.pasuki.power.blocks.Charger;
 
 import net.pasuki.power.Registration;
 import net.pasuki.power.tools.AdaptedEnergyStorage;
