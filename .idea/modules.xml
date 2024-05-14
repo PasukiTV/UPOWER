@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UPOWER.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UPOWER.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UPOWER.test.iml" filepath="$PROJECT_DIR$/.idea/modules/UPOWER.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mcjty.tutpower.UPOWER.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mcjty.tutpower.UPOWER.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mcjty.tutpower.UPOWER.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mcjty.tutpower.UPOWER.test.iml" />
     </modules>
   </component>
 </project>

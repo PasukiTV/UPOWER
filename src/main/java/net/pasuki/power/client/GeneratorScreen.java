@@ -1,8 +1,8 @@
 package net.pasuki.power.client;
 
 import net.pasuki.power.Power;
-import net.pasuki.power.blocks.Generator.GeneratorBlockEntity;
-import net.pasuki.power.blocks.Generator.GeneratorContainer;
+import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlockEntity;
+import net.pasuki.power.blocks.GeneratorBlock.GeneratorContainer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
