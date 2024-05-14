@@ -1,0 +1,9 @@
+{
+  "block.tutpower.cable": "Kabel",
+  "block.tutpower.charger_block": "Ladegerät",
+  "block.tutpower.facade": "Fassade",
+  "block.tutpower.generator_block": "Stromgenerator",
+  "screen.generator": "Generator",
+  "tab.tutpower": "Tutorial Strom",
+  "tutorial.facade.is_mimicing": "Die Fassade imitiert %s"
+}
