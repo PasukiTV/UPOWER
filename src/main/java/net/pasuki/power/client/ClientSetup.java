@@ -20,7 +20,8 @@ public class ClientSetup {
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            MenuScreens.register(Registration.GENERATOR_CONTAINER.get(), GeneratorScreen::new);
+            MenuScreens.register(Registration.GENERATOR_BLOCK_CONTAINER.get(), GeneratorBlockScreen::new);
+            MenuScreens.register(Registration.FARM_STATION_BLOCK_CONTAINER.get(), FarmStationBlockScreen::new);
         });
     }
 

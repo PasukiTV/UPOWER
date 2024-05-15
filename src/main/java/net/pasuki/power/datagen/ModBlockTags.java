@@ -19,11 +19,19 @@ public class ModBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(Registration.GENERATOR_BLOCK.get(),
-                Registration.CHARGER_BLOCK.get()).add(Registration.CABLE_BLOCK.get(),
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                Registration.GENERATOR_BLOCK.get(),
+                Registration.CHARGER_BLOCK.get(),
+                Registration.FARM_STATION_BLOCK.get(),
+
+                Registration.CABLE_BLOCK.get(),
                 Registration.FACADE_BLOCK.get());
-        tag(BlockTags.NEEDS_IRON_TOOL).add(Registration.GENERATOR_BLOCK.get(),
-                Registration.CHARGER_BLOCK.get()).add(Registration.CABLE_BLOCK.get(),
+        tag(BlockTags.NEEDS_IRON_TOOL).add(
+                Registration.GENERATOR_BLOCK.get(),
+                Registration.CHARGER_BLOCK.get(),
+                Registration.FARM_STATION_BLOCK.get(),
+
+                Registration.CABLE_BLOCK.get(),
                 Registration.FACADE_BLOCK.get());
-     }
+    }
 }

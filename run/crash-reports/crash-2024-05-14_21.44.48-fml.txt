@@ -43,7 +43,7 @@ Stacktrace:
 -- NO MOD INFO AVAILABLE --
 Details:
 	Mod File: NO FILE INFO
-	Failure message: mods.toml missing metadata for modid tutpower
+	Failure message: mods.toml missing metadata for modid power
 	Mod Version: NO MOD INFO AVAILABLE
 	Mod Issue URL: NOT PROVIDED
 	Exception message: MISSING EXCEPTION MESSAGE

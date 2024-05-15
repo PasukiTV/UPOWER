@@ -1,9 +1,9 @@
-// 1.20.1	2024-05-14T12:32:02.1430147	Recipes
-46978247e4b0e95bd747ec943d39d242dcf73291 data/tutpower/advancements/recipes/misc/cable.json
-57667a9d59deaeb2d559e0febe7534e63889a009 data/tutpower/advancements/recipes/misc/charger_block.json
-bb369bb658a8021657fd73d155885f037e1f18f5 data/tutpower/advancements/recipes/misc/facade.json
-eda14f6f48dffa6c8ba73835b42a6cfa1e4309ea data/tutpower/advancements/recipes/misc/generator_block.json
-ded1e46671dd28a46e58be1cdc8d0fe1b5080de6 data/tutpower/recipes/cable.json
-2f1a72183291659bd751dcb2ac2379220672efe4 data/tutpower/recipes/charger_block.json
-10390581dead37bb0370a1e4fb49d3d45c64072b data/tutpower/recipes/facade.json
-c65bdd07b258ad990478e7933ecf764df88f74ee data/tutpower/recipes/generator_block.json
+// 1.20.1	2024-05-14T23:29:04.0584625	Recipes
+615e7f105ce60f459b963136d4bc027a081c6243 data/power/advancements/recipes/misc/cable.json
+5848d06b3c29f1e99f54ff83a0df57fe90b74be3 data/power/advancements/recipes/misc/charger_block.json
+a3f30a210841b02f1fb4eaa8237663b8550029b5 data/power/advancements/recipes/misc/facade.json
+7f1a1664b730c9a76daa1b0c339d8fc557e3c1df data/power/advancements/recipes/misc/generator_block.json
+3e60c21fd032596c7ebdff68f4649853a64e895a data/power/recipes/cable.json
+ea0f8881c1029065dd07b32f12b687567fa99e12 data/power/recipes/charger_block.json
+8a6854ca688b3e75e02108bf72955c1c5153a171 data/power/recipes/facade.json
+29bcc63ed338f2f175571d903810e40660c7fd99 data/power/recipes/generator_block.json

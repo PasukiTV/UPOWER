@@ -1,0 +1,10 @@
+{
+  "block.power.cable": "Cable",
+  "block.power.charger_block": "Charger",
+  "block.power.facade": "Facade",
+  "block.power.farm_station_block": "Farmstation",
+  "block.power.generator_block": "Power Generator",
+  "screen.generator": "Generator",
+  "tab.power": "Tutorial Power",
+  "tutorial.facade.is_mimicing": "Facade is mimicking %s"
+}

@@ -107,7 +107,7 @@ public class GeneratorBlock extends Block implements EntityBlock {
 
                     @Override
                     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity) {
-                        return new GeneratorContainer(windowId, playerEntity, pos);
+                        return new GeneratorBlockContainer(windowId, playerEntity, pos);
                     }
                 };
                 NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());

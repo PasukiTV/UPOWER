@@ -1,5 +1,14 @@
 package net.pasuki.power;
 
+import net.pasuki.power.blocks.ChargerBlock.ChargerBlock;
+import net.pasuki.power.blocks.ChargerBlock.ChargerBlockEntity;
+import net.pasuki.power.blocks.FarmStationBlock.FarmStationBlock;
+import net.pasuki.power.blocks.FarmStationBlock.FarmStationBlockContainer;
+import net.pasuki.power.blocks.FarmStationBlock.FarmStationBlockEntity;
+import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlock;
+import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlockContainer;
+import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlockEntity;
+import net.pasuki.power.cables.blocks.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.MenuType;
@@ -11,13 +20,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.pasuki.power.blocks.ChargerBlock.ChargerBlock;
-import net.pasuki.power.blocks.ChargerBlock.ChargerBlockEntity;
-import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlock;
-import net.pasuki.power.blocks.GeneratorBlock.GeneratorBlockEntity;
-import net.pasuki.power.blocks.GeneratorBlock.GeneratorContainer;
-import net.pasuki.power.cables.blocks.*;
 
+@SuppressWarnings("DataFlowIssue")
 public class Registration {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Power.MODID);
@@ -30,13 +34,20 @@ public class Registration {
     public static final RegistryObject<Item> GENERATOR_BLOCK_ITEM = ITEMS.register("generator_block", () -> new BlockItem(GENERATOR_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockEntityType<GeneratorBlockEntity>> GENERATOR_BLOCK_ENTITY = BLOCK_ENTITIES.register("generator_block",
             () -> BlockEntityType.Builder.of(GeneratorBlockEntity::new, GENERATOR_BLOCK.get()).build(null));
-    public static final RegistryObject<MenuType<GeneratorContainer>> GENERATOR_CONTAINER = MENU_TYPES.register("generator_block",
-            () -> IForgeMenuType.create((windowId, inv, data) -> new GeneratorContainer(windowId, inv.player, data.readBlockPos())));
+    public static final RegistryObject<MenuType<GeneratorBlockContainer>> GENERATOR_BLOCK_CONTAINER = MENU_TYPES.register("generator_block",
+            () -> IForgeMenuType.create((windowId, inv, data) -> new GeneratorBlockContainer(windowId, inv.player, data.readBlockPos())));
 
     public static final RegistryObject<ChargerBlock> CHARGER_BLOCK = BLOCKS.register("charger_block", ChargerBlock::new);
     public static final RegistryObject<Item> CHARGER_BLOCK_ITEM = ITEMS.register("charger_block", () -> new BlockItem(CHARGER_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockEntityType<ChargerBlockEntity>> CHARGER_BLOCK_ENTITY = BLOCK_ENTITIES.register("charger_block",
             () -> BlockEntityType.Builder.of(ChargerBlockEntity::new, CHARGER_BLOCK.get()).build(null));
+
+    public static final RegistryObject<FarmStationBlock> FARM_STATION_BLOCK = BLOCKS.register("farm_station_block", FarmStationBlock::new);
+    public static final RegistryObject<Item> FARM_STATION_BLOCK_ITEM = ITEMS.register("farm_station_block", () -> new BlockItem(FARM_STATION_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<FarmStationBlockEntity>> FARM_STATION_BLOCK_ENTITY = BLOCK_ENTITIES.register("farm_station_block",
+            () -> BlockEntityType.Builder.of(FarmStationBlockEntity::new, FARM_STATION_BLOCK.get()).build(null));
+    public static final RegistryObject<MenuType<FarmStationBlockContainer>> FARM_STATION_BLOCK_CONTAINER = MENU_TYPES.register("farm_station_block",
+            () -> IForgeMenuType.create((windowId, inv, data) -> new FarmStationBlockContainer(windowId, inv.player, data.readBlockPos())));
 
     public static final RegistryObject<CableBlock> CABLE_BLOCK = BLOCKS.register("cable", CableBlock::new);
     public static final RegistryObject<Item> CABLE_BLOCK_ITEM = ITEMS.register("cable", () -> new BlockItem(CABLE_BLOCK.get(), new Item.Properties()));
@@ -57,6 +68,7 @@ public class Registration {
                 output.accept(CHARGER_BLOCK.get());
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
+                output.accept(FARM_STATION_BLOCK.get());
             })
             .build());
 
@@ -67,4 +79,5 @@ public class Registration {
         MENU_TYPES.register(modEventBus);
         TABS.register(modEventBus);
     }
+
 }

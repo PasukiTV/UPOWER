@@ -1,8 +1,9 @@
 {
   "values": [
-    "tutpower:generator_block",
-    "tutpower:charger_block",
-    "tutpower:cable",
-    "tutpower:facade"
+    "power:generator_block",
+    "power:charger_block",
+    "power:farm_station_block",
+    "power:cable",
+    "power:facade"
   ]
 }

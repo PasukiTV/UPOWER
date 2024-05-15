@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "power:block/machine_bottom",
+    "particle": "power:block/machine_side",
+    "side": "power:block/machine_side",
+    "top": "power:block/charger_block"
+  }
+}

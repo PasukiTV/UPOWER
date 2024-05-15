@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 @Mod(Power.MODID)
 public class Power {
 
-    public static final String MODID = "tutpower";
+    public static final String MODID = "power";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Power() {
