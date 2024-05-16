@@ -4,6 +4,7 @@
   "block.power.facade": "Fassade",
   "block.power.farm_station_block": "Farmstation",
   "block.power.generator_block": "Stromgenerator",
+  "item.power.energized_pickaxe": "Energie-Spitzhacke",
   "screen.generator": "Generator",
   "tab.power": "Tutorial Strom",
   "tutorial.facade.is_mimicing": "Die Fassade imitiert %s"

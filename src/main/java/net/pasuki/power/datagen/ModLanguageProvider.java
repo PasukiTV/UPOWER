@@ -36,6 +36,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(GeneratorBlock.SCREEN_GENERATOR, "Generator");
         add(FacadeBlockItem.FACADE_IS_MIMICING, "Facade is mimicking %s");
         add("tab.power", "Tutorial Power");
+
+        // Item translations
+
+        add(Registration.ENERGIZED_PICKAXE.get(), "Energized Pickaxe");
     }
 
     private void addGermanTranslations() {
@@ -48,5 +52,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(GeneratorBlock.SCREEN_GENERATOR, "Generator");
         add(FacadeBlockItem.FACADE_IS_MIMICING, "Die Fassade imitiert %s");
         add("tab.power", "Tutorial Strom");
+
+        // Item translations
+
+        add(Registration.ENERGIZED_PICKAXE.get(), "Energie-Spitzhacke");
     }
 }

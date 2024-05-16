@@ -20,6 +20,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.pasuki.power.items.EnergizedPickaxeItem;
 
 @SuppressWarnings("DataFlowIssue")
 public class Registration {
@@ -29,6 +30,9 @@ public class Registration {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Power.MODID);
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Power.MODID);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Power.MODID);
+
+    public static final RegistryObject<Item> ENERGIZED_PICKAXE = ITEMS.register("energized_pickaxe",
+            () -> new EnergizedPickaxeItem(Tiers.IRON, 1, -2.8F, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<GeneratorBlock> GENERATOR_BLOCK = BLOCKS.register("generator_block", GeneratorBlock::new);
     public static final RegistryObject<Item> GENERATOR_BLOCK_ITEM = ITEMS.register("generator_block", () -> new BlockItem(GENERATOR_BLOCK.get(), new Item.Properties()));
@@ -69,6 +73,8 @@ public class Registration {
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
                 output.accept(FARM_STATION_BLOCK.get());
+                output.accept(ENERGIZED_PICKAXE.get());
+
             })
             .build());
 
