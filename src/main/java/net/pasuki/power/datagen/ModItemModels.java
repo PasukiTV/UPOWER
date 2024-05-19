@@ -20,11 +20,12 @@ public class ModItemModels extends ItemModelProvider {
 
         withExistingParent(Registration.CABLE_BLOCK.getId().getPath(), modLoc("block/cable"));
         withExistingParent(Registration.FACADE_BLOCK.getId().getPath(), modLoc("block/facade"));
-        // Register Item Models
 
-        singleTexture(Registration.ENERGIZED_PICKAXE.getId().getPath(),
+// Register Item Models
+        singleTexture(Registration.ENERGY_PICKAXE.getId().getPath(),
                 mcLoc("item/handheld"),
                 "layer0",
-                modLoc("item/energized_pickaxe"));
+                modLoc("item/custom_energy_pickaxe"));
+
     }
 }

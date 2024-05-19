@@ -1,12 +1,14 @@
 package net.pasuki.power.tools;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 
 public class AdaptedEnergyStorage implements IEnergyStorage {
 
-    private final IEnergyStorage energyStorage;
+    private final EnergyStorage energyStorage;
 
-    public AdaptedEnergyStorage(IEnergyStorage energyStorage) {
+    public AdaptedEnergyStorage(EnergyStorage energyStorage) {
         this.energyStorage = energyStorage;
     }
 
@@ -40,3 +42,4 @@ public class AdaptedEnergyStorage implements IEnergyStorage {
         return energyStorage.canReceive();
     }
 }
+

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "power:item/energized_pickaxe"
+    "layer0": "power:item/custom_energy_pickaxe"
   }
 }

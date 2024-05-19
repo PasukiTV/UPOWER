@@ -4,8 +4,10 @@
   "block.power.facade": "Fassade",
   "block.power.farm_station_block": "Farmstation",
   "block.power.generator_block": "Stromgenerator",
-  "item.power.energized_pickaxe": "Energie-Spitzhacke",
+  "item.energizedpower.pickaxe.charging": "Laden: %s FE",
+  "item.power.energy_pickaxe": "Benutzerdefinierte Energiespitzhacke",
   "screen.generator": "Generator",
   "tab.power": "Tutorial Strom",
+  "tooltip.energizedpower.energy_meter.content.txt": "Energie: %1$s / %2$s FE",
   "tutorial.facade.is_mimicing": "Die Fassade imitiert %s"
 }

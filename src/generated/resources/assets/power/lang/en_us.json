@@ -4,8 +4,10 @@
   "block.power.facade": "Facade",
   "block.power.farm_station_block": "Farmstation",
   "block.power.generator_block": "Power Generator",
-  "item.power.energized_pickaxe": "Energized Pickaxe",
+  "item.energizedpower.pickaxe.charging": "Charging: %s FE",
+  "item.power.energy_pickaxe": "Custom Energy Pickaxe",
   "screen.generator": "Generator",
   "tab.power": "Tutorial Power",
+  "tooltip.energizedpower.energy_meter.content.txt": "Energy: %1$s / %2$s FE",
   "tutorial.facade.is_mimicing": "Facade is mimicking %s"
 }

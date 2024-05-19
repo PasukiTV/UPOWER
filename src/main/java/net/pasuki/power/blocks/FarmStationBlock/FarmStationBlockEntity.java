@@ -94,7 +94,6 @@ public class FarmStationBlockEntity extends BlockEntity {
      * Führt die Farming-Operationen wie Pflanzen und Ernten auf einem 3x3-Feld an der Rückseite des Blocks aus.
      */
     private void performFarmingOperations() {
-        logEnergy("Start of Farming Operations", energy.getEnergyStored());
         BlockPos pos = getBlockPos();
         Direction facing = getBlockState().getValue(BlockStateProperties.FACING);
         List<BlockPos> positions = get3x3FieldPositions(pos, facing);
@@ -111,11 +110,9 @@ public class FarmStationBlockEntity extends BlockEntity {
                     Block cropBlock = getCropBlock(seedItem);
                     int energyToPlant = ENERGY_CONSUMPTION_PLANT;
                     if (energy.extractEnergy(energyToPlant, true) >= energyToPlant) {
-                        logEnergy("Before Planting", energy.getEnergyStored());
                         level.setBlockAndUpdate(abovePos, cropBlock.defaultBlockState());
                         energy.extractEnergy(energyToPlant, false);
                         consumeSeed();
-                        logEnergy("After Planting", energy.getEnergyStored());
                     }
                 }
 
@@ -123,13 +120,11 @@ public class FarmStationBlockEntity extends BlockEntity {
                 else if (aboveState.getBlock() instanceof CropBlock cropBlock && cropBlock.isMaxAge(aboveState)) {
                     int energyToHarvest = ENERGY_CONSUMPTION_HARVEST;
                     if (energy.extractEnergy(energyToHarvest, true) >= energyToHarvest) {
-                        logEnergy("Before Harvesting", energy.getEnergyStored());
 
                         boolean chestNearby = isChestNearby();
                         boolean chestFull = isChestFull();
 
                         if (chestNearby && chestFull) {
-                            logEnergy("Chest is full, skipping harvest", energy.getEnergyStored());
                             continue;
                         }
 
@@ -160,13 +155,10 @@ public class FarmStationBlockEntity extends BlockEntity {
                         }
 
                         energy.extractEnergy(energyToHarvest, false);
-                        logEnergy("After Harvesting", energy.getEnergyStored());
                     }
                 }
             }
         }
-
-        logEnergy("End of Farming Operations", energy.getEnergyStored());
     }
 
     /**

@@ -1,7 +1,7 @@
-// 1.20.1	2024-05-16T21:46:19.6104816	Item Models: power
+// 1.20.1	2024-05-17T22:45:44.8196077	Item Models: power
 5055d9d6a1c137ae8e299b88e0ef79f0a79d81f2 assets/power/models/item/cable.json
 c80195ff53fa16148decb7315b1c8a5048ce37dd assets/power/models/item/charger_block.json
-467bc389206a927435549b453f65e959a0962fdf assets/power/models/item/energized_pickaxe.json
+2af33c539891d41d47cb4b433b393835ddff6ffa assets/power/models/item/energy_pickaxe.json
 5f9c90364952f80524578dfcc4f2fae6dc1c8db2 assets/power/models/item/facade.json
 b95553b8711f4ec1b88c4b388c1c0433b0a95539 assets/power/models/item/farm_station_block.json
 b95553b8711f4ec1b88c4b388c1c0433b0a95539 assets/power/models/item/generator_block.json

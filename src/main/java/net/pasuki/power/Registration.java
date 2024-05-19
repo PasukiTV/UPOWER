@@ -1,5 +1,7 @@
 package net.pasuki.power;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.pasuki.power.blocks.ChargerBlock.ChargerBlock;
 import net.pasuki.power.blocks.ChargerBlock.ChargerBlockEntity;
 import net.pasuki.power.blocks.FarmStationBlock.FarmStationBlock;
@@ -20,7 +22,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.pasuki.power.items.EnergizedPickaxeItem;
+import net.pasuki.power.energy.IEnergizedPowerEnergyStorage;
+import net.pasuki.power.items.energy.EnergizedPowerPickaxe;
 
 @SuppressWarnings("DataFlowIssue")
 public class Registration {
@@ -31,8 +34,7 @@ public class Registration {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Power.MODID);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Power.MODID);
 
-    public static final RegistryObject<Item> ENERGIZED_PICKAXE = ITEMS.register("energized_pickaxe",
-            () -> new EnergizedPickaxeItem(Tiers.IRON, 1, -2.8F, new Item.Properties().stacksTo(1)));
+
 
     public static final RegistryObject<GeneratorBlock> GENERATOR_BLOCK = BLOCKS.register("generator_block", GeneratorBlock::new);
     public static final RegistryObject<Item> GENERATOR_BLOCK_ITEM = ITEMS.register("generator_block", () -> new BlockItem(GENERATOR_BLOCK.get(), new Item.Properties()));
@@ -63,6 +65,106 @@ public class Registration {
     public static final RegistryObject<BlockEntityType<FacadeBlockEntity>> FACADE_BLOCK_ENTITY = BLOCK_ENTITIES.register("facade",
             () -> BlockEntityType.Builder.of(FacadeBlockEntity::new, FACADE_BLOCK.get()).build(null));
 
+    // Energized Power Pickaxe
+    public static final RegistryObject<Item> ENERGY_PICKAXE = ITEMS.register("energy_pickaxe",
+            () -> new EnergizedPowerPickaxe(Tiers.DIAMOND, 1, -2.8F, new Item.Properties().stacksTo(1).durability(1561),
+                    () -> new IEnergizedPowerEnergyStorage() {
+                        private int energy = 0;
+                        private final int capacity = 1000;
+
+                        @Override
+                        public int getEnergy() {
+                            return energy;
+                        }
+
+                        @Override
+                        public void setEnergy(int energy) {
+                            this.energy = Math.min(energy, capacity);
+                        }
+
+                        @Override
+                        public void setEnergyWithoutUpdate(int energy) {
+                            this.energy = energy;
+                        }
+
+                        @Override
+                        public int getCapacity() {
+                            return capacity;
+                        }
+
+                        @Override
+                        public void setCapacity(int capacity) {
+                            // Do nothing, capacity is fixed
+                        }
+
+                        @Override
+                        public void setCapacityWithoutUpdate(int capacity) {
+                            // Do nothing, capacity is fixed
+                        }
+
+                        @Override
+                        public Tag saveNBT() {
+                            CompoundTag tag = new CompoundTag();
+                            tag.putInt("Energy", energy);
+                            tag.putInt("Capacity", capacity);
+                            return tag;
+                        }
+
+                        @Override
+                        public void loadNBT(Tag tag) {
+                            if (tag instanceof CompoundTag) {
+                                CompoundTag compoundTag = (CompoundTag) tag;
+                                energy = compoundTag.getInt("Energy");
+                            }
+                        }
+
+                        @Override
+                        public int receiveEnergy(int maxReceive, boolean simulate) {
+                            if (!canReceive()) {
+                                return 0;
+                            }
+
+                            int energyReceived = Math.min(capacity - energy, maxReceive);
+                            if (!simulate) {
+                                energy += energyReceived;
+                            }
+                            return energyReceived;
+                        }
+
+                        @Override
+                        public int extractEnergy(int maxExtract, boolean simulate) {
+                            if (!canExtract()) {
+                                return 0;
+                            }
+
+                            int energyExtracted = Math.min(energy, maxExtract);
+                            if (!simulate) {
+                                energy -= energyExtracted;
+                            }
+                            return energyExtracted;
+                        }
+
+                        @Override
+                        public int getEnergyStored() {
+                            return energy;
+                        }
+
+                        @Override
+                        public int getMaxEnergyStored() {
+                            return capacity;
+                        }
+
+                        @Override
+                        public boolean canExtract() {
+                            return true;
+                        }
+
+                        @Override
+                        public boolean canReceive() {
+                            return true;
+                        }
+                    }));
+
     public static RegistryObject<CreativeModeTab> TAB = TABS.register("tutpower", () -> CreativeModeTab.builder()
             .title(Component.translatable("tab.tutpower"))
             .icon(() -> new ItemStack(GENERATOR_BLOCK.get()))
@@ -73,8 +175,7 @@ public class Registration {
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
                 output.accept(FARM_STATION_BLOCK.get());
-                output.accept(ENERGIZED_PICKAXE.get());
-
+                output.accept(ENERGY_PICKAXE.get());
             })
             .build());
 
