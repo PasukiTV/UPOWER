@@ -21,16 +21,18 @@ public final class EnergyUtils {
      */
     public static String getEnergyWithPrefix(int energy) {
         // Wenn der Energiewert kleiner als 1000 ist, wird er ohne Präfix zurückgegeben
-        if (energy < 1000)
+        if (energy < 1000) {
             return String.format(Locale.ENGLISH, "%d FE", energy);
+        }
 
-        double energyWithPrefix = energy; // Kopie des Energiewertes zur Bearbeitung
-        int prefixIndex = 0; // Index für das Präfix-Array
+        // Kopie des Energiewertes zur Bearbeitung als double für Division
+        double energyWithPrefix = energy;
+        int prefixIndex = 0;
 
         // Solange der Energiewert größer oder gleich 1000 ist und es weitere Präfixe gibt
-        while (((int) energyWithPrefix >= 1000) && prefixIndex + 1 < ENERGY_PREFIXES.length) {
-            energyWithPrefix /= 1000; // Energiewert durch 1000 teilen
-            prefixIndex++; // Zum nächsten Präfix wechseln
+        while (energyWithPrefix >= 1000 && prefixIndex < ENERGY_PREFIXES.length - 1) {
+            energyWithPrefix /= 1000;
+            prefixIndex++;
         }
 
         // Formatierte Zeichenkette mit dem Energiewert und dem entsprechenden Präfix zurückgeben
@@ -43,11 +45,16 @@ public final class EnergyUtils {
      * @return Die Redstone-Signalstärke von 0 bis 15.
      */
     public static int getRedstoneSignalFromEnergyStorage(IEnergyStorage energyStorage) {
-        boolean isEmptyFlag = energyStorage.getEnergyStored() == 0; // Prüfen, ob der Energiespeicher leer ist
+        // Prüfen, ob der Energiespeicher leer ist
+        int storedEnergy = energyStorage.getEnergyStored();
+        int maxEnergy = energyStorage.getMaxEnergyStored();
+        boolean isEmpty = storedEnergy == 0;
 
         // Berechnung der Redstone-Signalstärke:
         // (Aktuelle Energie / Maximale Energie) * 14, aufgerundet
         // Falls der Energiespeicher nicht leer ist, wird 1 addiert, um ein Minimumsignal zu gewährleisten
-        return Math.min(Mth.floor((float) energyStorage.getEnergyStored() / energyStorage.getMaxEnergyStored() * 14.f) + (isEmptyFlag ? 0 : 1), 15);
+        int signal = Math.min(Mth.floor((float) storedEnergy / maxEnergy * 14.f) + (isEmpty ? 0 : 1), 15);
+
+        return signal;
     }
 }

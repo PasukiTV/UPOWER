@@ -71,7 +71,7 @@ public class ModBlockStates extends BlockStateProvider {
 
     private void registerFarmStationBlock() {
         BlockModelBuilder modelOn = models().cube(Registration.FARM_STATION_BLOCK.getId().getPath()+"_on", BOTTOM, TOP, modLoc("block/farmstation_block_on"), SIDE, SIDE, SIDE).texture("particle", SIDE);
-        BlockModelBuilder modelOff = models().cube(Registration.FARM_STATION_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/farmstation_block_off"), SIDE, SIDE, SIDE).texture("particle", SIDE);
+        BlockModelBuilder modelOff = models().cube(Registration.FARM_STATION_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/farmstation_block"), SIDE, SIDE, SIDE).texture("particle", SIDE);
         directionBlock(Registration.FARM_STATION_BLOCK.get(), (state, builder) -> {
             builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
         });

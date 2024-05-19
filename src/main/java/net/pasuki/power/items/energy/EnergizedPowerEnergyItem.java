@@ -20,58 +20,86 @@ import java.util.function.Supplier;
 public class EnergizedPowerEnergyItem extends Item {
     private final Supplier<IEnergizedPowerEnergyStorage> energyStorageProvider; // Lieferant für den Energie-Speicher
 
-    // Konstruktor der Klasse
+    /**
+     * Konstruktor der Klasse.
+     * @param props Die Eigenschaften des Items.
+     * @param energyStorageProvider Der Lieferant für den Energie-Speicher.
+     */
     public EnergizedPowerEnergyItem(Properties props, Supplier<IEnergizedPowerEnergyStorage> energyStorageProvider) {
         super(props);
         this.energyStorageProvider = energyStorageProvider;
     }
 
-    // Methode zum Abrufen der gespeicherten Energie eines ItemStacks
-    protected static int getEnergy(ItemStack itemStack) {
-        return itemStack.getCapability(ForgeCapabilities.ENERGY).orElse(null).getEnergyStored();
+    /**
+     * Methode zum Abrufen des Energie-Speicherobjekts eines ItemStacks.
+     * @param itemStack Der ItemStack.
+     * @return Das IEnergizedPowerEnergyStorage-Objekt.
+     */
+    private static IEnergizedPowerEnergyStorage getEnergyStorage(ItemStack itemStack) {
+        return itemStack.getCapability(ForgeCapabilities.ENERGY)
+                .filter(cap -> cap instanceof IEnergizedPowerEnergyStorage)
+                .map(cap -> (IEnergizedPowerEnergyStorage) cap)
+                .orElseThrow(() -> new IllegalArgumentException("Energy capability not present"));
     }
 
-    // Methode zum Setzen der gespeicherten Energie eines ItemStacks
-    protected static void setEnergy(ItemStack itemStack, int energy) {
-        ((ItemCapabilityEnergy)itemStack.getCapability(ForgeCapabilities.ENERGY).orElse(null)).setEnergy(energy);
-    }
-
-    // Methode zum Abrufen der maximalen Energiekapazität eines ItemStacks
-    protected static int getCapacity(ItemStack itemStack) {
-        return itemStack.getCapability(ForgeCapabilities.ENERGY).orElse(null).getMaxEnergyStored();
-    }
-
-    // Zeigt die Energieleiste an, wenn das Item im Inventar ist
+    /**
+     * Zeigt die Energieleiste an, wenn das Item im Inventar ist.
+     * @param stack Der ItemStack.
+     * @return true, wenn die Energieleiste sichtbar ist.
+     */
     @Override
     public boolean isBarVisible(ItemStack stack) {
         return true;
     }
 
-    // Berechnet die Breite der Energieleiste basierend auf der gespeicherten Energie und Kapazität
+    /**
+     * Berechnet die Breite der Energieleiste basierend auf der gespeicherten Energie und Kapazität.
+     * @param stack Der ItemStack.
+     * @return Die Breite der Energieleiste.
+     */
     @Override
     public int getBarWidth(ItemStack stack) {
-        return Math.round(getEnergy(stack) * 13.f / getCapacity(stack));
+        IEnergizedPowerEnergyStorage energyStorage = getEnergyStorage(stack);
+        return Math.round(energyStorage.getEnergyStored() * 13.f / energyStorage.getMaxEnergyStored());
     }
 
-    // Berechnet die Farbe der Energieleiste basierend auf dem Verhältnis der gespeicherten Energie zur Kapazität
+    /**
+     * Berechnet die Farbe der Energieleiste basierend auf dem Verhältnis der gespeicherten Energie zur Kapazität.
+     * @param stack Der ItemStack.
+     * @return Die Farbe der Energieleiste.
+     */
     @Override
     public int getBarColor(ItemStack stack) {
-        float f = Math.max(0.f, getEnergy(stack) / (float)getCapacity(stack));
-        return Mth.hsvToRgb(f * .33f, 1.f, 1.f); // HSV zu RGB-Konvertierung
+        IEnergizedPowerEnergyStorage energyStorage = getEnergyStorage(stack);
+        float f = Math.max(0.f, (float) energyStorage.getEnergyStored() / energyStorage.getMaxEnergyStored());
+        return Mth.hsvToRgb(f * .33f, 1.f, 1.f); // Konvertiert HSV-Wert in RGB-Wert
     }
 
-    // Fügt dem Tooltip des Items den Energiewert und die Kapazität hinzu
+    /**
+     * Fügt dem Tooltip des Items den Energiewert und die Kapazität hinzu.
+     * @param itemStack Der ItemStack.
+     * @param level Das Level.
+     * @param components Die Liste der Komponenten.
+     * @param tooltipFlag Das Tooltip-Flag.
+     */
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+        IEnergizedPowerEnergyStorage energyStorage = getEnergyStorage(itemStack);
         components.add(Component.translatable("tooltip.energizedpower.energy_meter.content.txt",
-                        EnergyUtils.getEnergyWithPrefix(getEnergy(itemStack)),
-                        EnergyUtils.getEnergyWithPrefix(getCapacity(itemStack))).
-                withStyle(ChatFormatting.GRAY));
+                        EnergyUtils.getEnergyWithPrefix(energyStorage.getEnergyStored()),
+                        EnergyUtils.getEnergyWithPrefix(energyStorage.getMaxEnergyStored()))
+                .withStyle(ChatFormatting.GRAY));
     }
 
-    // Initialisiert die Fähigkeiten des Items, einschließlich des Energie-Speichers
+    /**
+     * Initialisiert die Fähigkeiten des Items, einschließlich des Energie-Speichers.
+     * @param stack Der ItemStack.
+     * @param nbt Das NBT-Tag.
+     * @return Der ICapabilityProvider.
+     */
     @Override
     public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return new ItemCapabilityEnergy(stack, stack.getTag(), energyStorageProvider.get());
     }
 }
+

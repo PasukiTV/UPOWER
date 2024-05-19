@@ -2,7 +2,7 @@
   "values": [
     "power:generator_block",
     "power:charger_block",
-    "power:farm_station_block",
+    "power:farmstation_block",
     "power:cable",
     "power:facade"
   ]

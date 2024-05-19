@@ -16,16 +16,16 @@ public class ModItemModels extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent(Registration.GENERATOR_BLOCK.getId().getPath(), modLoc("block/generator_block_off"));
         withExistingParent(Registration.CHARGER_BLOCK.getId().getPath(), modLoc("block/charger_block_on"));
-        withExistingParent(Registration.FARM_STATION_BLOCK.getId().getPath(), modLoc("block/generator_block_off"));
+        withExistingParent(Registration.FARM_STATION_BLOCK.getId().getPath(), modLoc("block/farmstation_block_off"));
 
         withExistingParent(Registration.CABLE_BLOCK.getId().getPath(), modLoc("block/cable"));
         withExistingParent(Registration.FACADE_BLOCK.getId().getPath(), modLoc("block/facade"));
 
 // Register Item Models
+        withExistingParent(Registration.FARM_STATION_BLOCK_ITEM.getId().getPath(), modLoc("block/farmstation_block_off"));
         singleTexture(Registration.ENERGY_PICKAXE.getId().getPath(),
                 mcLoc("item/handheld"),
                 "layer0",
                 modLoc("item/custom_energy_pickaxe"));
-
     }
 }

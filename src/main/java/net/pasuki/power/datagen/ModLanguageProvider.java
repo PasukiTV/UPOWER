@@ -29,7 +29,8 @@ public class ModLanguageProvider extends LanguageProvider {
     private void addEnglishTranslations() {
         add(Registration.GENERATOR_BLOCK.get(), "Power Generator");
         add(Registration.CHARGER_BLOCK.get(), "Charger");
-        add(Registration.FARM_STATION_BLOCK.get(), "Farmstation");
+        add(Registration.FARM_STATION_BLOCK_ITEM.get(), "Farmstation");
+        add("tooltip.farmstation.energy_meter.content.txt", "Energy: %1$s / %2$s FE");
 
         add(Registration.CABLE_BLOCK.get(), "Cable");
         add(Registration.FACADE_BLOCK.get(), "Facade");
@@ -41,12 +42,14 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.ENERGY_PICKAXE.get(), "Custom Energy Pickaxe");
         add("tooltip.energizedpower.energy_meter.content.txt", "Energy: %1$s / %2$s FE");
         add("item.energizedpower.pickaxe.charging", "Charging: %s FE");
+
     }
 
     private void addGermanTranslations() {
         add(Registration.GENERATOR_BLOCK.get(), "Stromgenerator");
         add(Registration.CHARGER_BLOCK.get(), "Ladegerät");
-        add(Registration.FARM_STATION_BLOCK.get(), "Farmstation");
+        add(Registration.FARM_STATION_BLOCK_ITEM.get(), "Farmstation");
+        add("tooltip.farmstation.energy_meter.content.txt", "Energie: %1$s / %2$s FE");
 
         add(Registration.CABLE_BLOCK.get(), "Kabel");
         add(Registration.FACADE_BLOCK.get(), "Fassade");
@@ -58,5 +61,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.ENERGY_PICKAXE.get(), "Benutzerdefinierte Energiespitzhacke");
         add("tooltip.energizedpower.energy_meter.content.txt", "Energie: %1$s / %2$s FE");
         add("item.energizedpower.pickaxe.charging", "Laden: %s FE");
+
     }
 }

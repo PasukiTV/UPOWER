@@ -2,12 +2,13 @@
   "block.power.cable": "Kabel",
   "block.power.charger_block": "Ladegerät",
   "block.power.facade": "Fassade",
-  "block.power.farm_station_block": "Farmstation",
+  "block.power.farmstation_block": "Farmstation",
   "block.power.generator_block": "Stromgenerator",
   "item.energizedpower.pickaxe.charging": "Laden: %s FE",
   "item.power.energy_pickaxe": "Benutzerdefinierte Energiespitzhacke",
   "screen.generator": "Generator",
   "tab.power": "Tutorial Strom",
   "tooltip.energizedpower.energy_meter.content.txt": "Energie: %1$s / %2$s FE",
+  "tooltip.farmstation.energy_meter.content.txt": "Energie: %1$s / %2$s FE",
   "tutorial.facade.is_mimicing": "Die Fassade imitiert %s"
 }

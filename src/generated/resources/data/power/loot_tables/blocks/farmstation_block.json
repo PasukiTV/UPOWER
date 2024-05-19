@@ -34,7 +34,7 @@
               "source": "block_entity"
             },
             {
-              "type": "power:farm_station_block",
+              "type": "power:farmstation_block",
               "entries": [
                 {
                   "type": "minecraft:dynamic",
@@ -44,11 +44,11 @@
               "function": "minecraft:set_contents"
             }
           ],
-          "name": "power:farm_station_block"
+          "name": "power:farmstation_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "power:blocks/farm_station_block"
+  "random_sequence": "power:blocks/farmstation_block"
 }

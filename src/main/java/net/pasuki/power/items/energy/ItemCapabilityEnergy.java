@@ -33,35 +33,31 @@ public class ItemCapabilityEnergy implements ICapabilityProvider, IEnergyStorage
     // Gibt die Energie-Fähigkeit zurück, wenn danach gefragt wird
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ENERGY) {
-            return lazyEnergyStorage.cast(); // Wandelt das LazyOptional in den geforderten Typ um
-        }
-
-        return LazyOptional.empty(); // Gibt ein leeres LazyOptional zurück, wenn die Fähigkeit nicht unterstützt wird
+        return cap == ForgeCapabilities.ENERGY ? lazyEnergyStorage.cast() : LazyOptional.empty();
     }
 
     // Methode zum Empfangen von Energie
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
-        int ret = energyStorage.receiveEnergy(maxReceive, simulate);
+        int received = energyStorage.receiveEnergy(maxReceive, simulate);
 
         // Wenn es keine Simulation ist, wird der aktuelle Energiezustand im NBT-Tag des ItemStacks gespeichert
         if(!simulate)
             itemStack.getOrCreateTag().put("energy", energyStorage.saveNBT());
 
-        return ret; // Gibt die tatsächlich empfangene Energiemenge zurück
+        return received; // Gibt die tatsächlich empfangene Energiemenge zurück
     }
 
     // Methode zum Extrahieren von Energie
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-        int ret = energyStorage.extractEnergy(maxExtract, simulate);
+        int extracted = energyStorage.extractEnergy(maxExtract, simulate);
 
         // Wenn es keine Simulation ist, wird der aktuelle Energiezustand im NBT-Tag des ItemStacks gespeichert
         if(!simulate)
             itemStack.getOrCreateTag().put("energy", energyStorage.saveNBT());
 
-        return ret; // Gibt die tatsächlich extrahierte Energiemenge zurück
+        return extracted; // Gibt die tatsächlich extrahierte Energiemenge zurück
     }
 
     // Gibt die aktuell gespeicherte Energiemenge zurück
@@ -88,11 +84,9 @@ public class ItemCapabilityEnergy implements ICapabilityProvider, IEnergyStorage
         return energyStorage.canReceive();
     }
 
-    // Setzt die Energiemenge auf einen bestimmten Wert
+    // Setzt die Energiemenge auf einen bestimmten Wert und aktualisiert den NBT-Tag
     public void setEnergy(int energy) {
         energyStorage.setEnergy(energy);
-
-        // Speichert den aktuellen Energiezustand im NBT-Tag des ItemStacks
         itemStack.getOrCreateTag().put("energy", energyStorage.saveNBT());
     }
 
@@ -101,3 +95,4 @@ public class ItemCapabilityEnergy implements ICapabilityProvider, IEnergyStorage
         energyStorage.setCapacity(capacity);
     }
 }
+
